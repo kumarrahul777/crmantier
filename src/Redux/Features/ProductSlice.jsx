@@ -18,7 +18,7 @@ export const addNewData = createAsyncThunk(
       });
 
       let data = await res.json();
-      console.log(data);
+
       if (data.id) {
         toast.success("Product added successfully");
       }
@@ -114,7 +114,6 @@ export const productSlice = createSlice({
       state.error = "";
     });
     builder.addCase(getAllProduct.rejected, (state, action) => {
-      console.log(action);
       state.error = action.payload;
       state.productData = [];
     });
@@ -160,7 +159,6 @@ export const productSlice = createSlice({
 
     builder.addCase(getSingleProduct.pending, (state, action) => {});
     builder.addCase(getSingleProduct.fulfilled, (state, action) => {
-      console.log(action);
       state.singleProduct = action.payload;
       state.error = "";
     });
